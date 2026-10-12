@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · Character Select</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <!-- ===================== header ===================== -->
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark">N</span>
+                <div>
+                    <h1>NEXUS</h1>
+                    <p id="account-line">Welcome to the city</p>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <button class="chip" id="btn-refresh">↻ Refresh</button>
+            </div>
+        </header>
+
+        <main class="layout">
+            <!-- ===================== character list ===================== -->
+            <section class="characters">
+                <div class="section-head">
+                    <h2>Your characters</h2>
+                    <span id="slot-count" class="muted">0 / 4 slots</span>
+                </div>
+                <div id="character-list" class="character-list"></div>
+            </section>
+
+            <!-- ===================== actions / creation ===================== -->
+            <aside class="side">
+                <div id="view-actions" class="card">
+                    <h3>Getting started</h3>
+                    <p class="muted">Select a character on the left to enter the city, or create a new one.</p>
+                    <button class="btn primary block" id="btn-new">+ Create character</button>
+                    <ul class="tips">
+                        <li>Your character's name is permanent.</li>
+                        <li>Starting funds: cash and a bank account.</li>
+                        <li>Stay in character — this is a roleplay server.</li>
+                    </ul>
+                </div>
+
+                <form id="view-create" class="card hidden" autocomplete="off">
+                    <h3>New character</h3>
+                    <p class="muted">Choose carefully. Names cannot be changed later.</p>
+
+                    <div class="row">
+                        <div class="field">
+                            <label for="first-name">First name</label>
+                            <input id="first-name" name="firstName" maxlength="24" placeholder="John" required />
+                        </div>
+                        <div class="field">
+                            <label for="last-name">Last name</label>
+                            <input id="last-name" name="lastName" maxlength="24" placeholder="Doe" required />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Gender</label>
+                        <div class="segmented" id="gender-group">
+                            <button type="button" class="seg selected" data-value="0">Male</button>
+                            <button type="button" class="seg" data-value="1">Female</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label for="birth-date">Date of birth</label>
+                            <input id="birth-date" name="birthDate" type="date" required />
+                        </div>
+                        <div class="field">
+                            <label for="nationality">Nationality</label>
+                            <select id="nationality" name="nationality"></select>
+                        </div>
+                    </div>
+
+                    <div id="create-error" class="error hidden"></div>
+
+                    <div class="actions">
+                        <button type="button" class="btn ghost" id="btn-cancel-create">Cancel</button>
+                        <button type="submit" class="btn primary">Create &amp; customise</button>
+                    </div>
+                </form>
+
+                <div class="card stat-card">
+                    <h3>Server</h3>
+                    <div class="stat"><span>Framework</span><strong id="stat-framework">Nexus</strong></div>
+                    <div class="stat"><span>Mode</span><strong>Serious Roleplay</strong></div>
+                    <div class="stat"><span>Characters</span><strong id="stat-characters">0</strong></div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="footer">
+            <span>Nexus Framework · character selection</span>
+            <span class="muted">Press <b>Esc</b> to clear focus</span>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+# ---------------------------------------------------------------------------
+#  NEXUS FRAMEWORK :: Example server.cfg
+#  Copy to your server root (next to run.cmd / FXServer binary) and edit the
+#  three EVERYTHING-CAPS settings at the bottom before you start.
+# ---------------------------------------------------------------------------
+
+# --- connection / security ---------------------------------------------------
+endpoint_add_tcp "0.0.0.0:30120"
+endpoint_add_udp "0.0.0.0:30120"
+
+# CHANGE THESE
+sv_licenseKey "CHANGEME_PLEASE_SET_A_REAL_LICENSE_KEY"
+sv_tebexSecret ""
+sv_master1 ""
+
+sv_hostname "^5Nexus^7 Framework ^8| ^7Serious RP"
+sv_projectName "Nexus Framework"
+sv_projectDesc "A custom FiveM roleplay framework built on nx_core"
+sv_maxclients 128
+sv_endpointprivacy true
+sv_enforceGameBuild 3095
+sv_scriptHookAllowed 0
+
+sets sv_enableNetworkedSounds true
+sets sv_licenseKeyPlaceholder ""
+
+# --- stock resources (keep these) -------------------------------------------
+ensure mapmanager
+ensure spawnmanager
+ensure sessionmanager
+ensure basic-gamemode
+ensure hardcap
+ensure rconlog
+ensure scoreboard
+
+# --- database ---------------------------------------------------------------
+set mysql_connection_string "mysql://root:password@127.0.0.1/nexus?charset=utf8mb4"
+set mysql_slow_query_warning 200
+set oxmysql_debug false
+
+ensure oxmysql
+
+# --- framework --------------------------------------------------------------
+set nx_locale "en"
+set nx_dev_mode "false"
+
+ensure nx_core
+
+# --- gameplay (order matters: core -> the rest) ------------------------------
+ensure nx_hud
+ensure nx_multicharacter
+ensure nx_spawn
+ensure nx_inventory
+ensure nx_appearance
+ensure nx_vehicles
+ensure nx_garages
+ensure nx_vehicleshop
+ensure nx_banking
+ensure nx_shops
+ensure nx_jobs
+ensure nx_police
+ensure nx_ems
+ensure nx_chat
+
+# --- pending resources -------------------------------------------------------
+# These are referenced by nx_core and the gameplay scripts but are not part of
+# the repository yet. Uncomment each line only once the folder exists under
+# resources/[nexus]/, otherwise the server logs a "couldn't find resource".
+# ensure nx_ui              # shared NUI component library
+# ensure nx_weathersync     # dynamic weather and time sync
+# ensure nx_mechanic        # mechanic shops, repairs and towing
+# ensure nx_phone           # phone, messages, 911 calls and Twitter bridge
+# ensure nx_admin           # in-game admin panel (server bridge in nx_core)
+# ensure nx_loadingscreen   # pre-connect loading screen
+
+# --- optional third party (enable if you use them) ---------------------------
+# ensure pma-voice          # proximity voice - nx_hud + nx_phone detect it
+# ensure screenshot-basic   # used by the photo app in nx_phone
+
+# --- ACE permissions ---------------------------------------------------------
+add_ace group.admin nexus.admin allow
+add_ace group.admin nexus.admin.super allow
+add_ace group.moderator nexus.admin.kick allow
+add_ace group.moderator nexus.admin.ban allow
+add_ace group.moderator nexus.admin.warn allow
+add_principal identifier.license:CHANGEME_YOUR_LICENSE_HERE group.admin
+
+# --- misc --------------------------------------------------------------------
+setr nx_log_webhook ""
+setr nx_log_level "info"

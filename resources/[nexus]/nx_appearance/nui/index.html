@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · Appearance</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <div class="scrim"></div>
+
+        <div class="layout">
+            <!-- navigation -->
+            <aside class="nav">
+                <h1 id="title">Character</h1>
+                <p class="muted small" id="subtitle">Design your character</p>
+
+                <button class="nav-item selected" data-view="identity">Identity</button>
+                <button class="nav-item" data-view="face">Face</button>
+                <button class="nav-item" data-view="hair">Hair</button>
+                <button class="nav-item" data-view="clothes">Clothes</button>
+                <button class="nav-item" data-view="accessories">Accessories</button>
+                <button class="nav-item" data-view="wardrobe">Wardrobe</button>
+            </aside>
+
+            <!-- panels -->
+            <section class="panel">
+                <div class="view" id="view-identity">
+                    <h2>Identity</h2>
+                    <div class="row">
+                        <button class="seg selected" data-gender="male">Male</button>
+                        <button class="seg" data-gender="female">Female</button>
+                    </div>
+                    <p class="hint">Switching gender resets the face sliders.</p>
+
+                    <h2>Heritage</h2>
+                    <div id="blend" class="sliders"></div>
+                </div>
+
+                <div class="view hidden" id="view-face">
+                    <h2>Face shape</h2>
+                    <div id="features" class="sliders"></div>
+                </div>
+
+                <div class="view hidden" id="view-hair">
+                    <h2>Hair</h2>
+                    <div id="hair-options" class="sliders"></div>
+
+                    <h2>Colours</h2>
+                    <div id="colours" class="colours"></div>
+                </div>
+
+                <div class="view hidden" id="view-clothes">
+                    <h2>Tops</h2>
+                    <div id="components" class="components"></div>
+                </div>
+
+                <div class="view hidden" id="view-accessories">
+                    <h2>Accessories</h2>
+                    <div id="props" class="components"></div>
+                </div>
+
+                <div class="view hidden" id="view-wardrobe">
+                    <h2>Saved outfits</h2>
+                    <div id="outfits" class="outfits"></div>
+
+                    <div class="save-row">
+                        <input id="outfit-name" type="text" placeholder="Outfit name" />
+                        <button class="btn" id="btn-save-outfit">Save current look</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <div class="left">
+                <button class="btn ghost" id="btn-random">Surprise me</button>
+                <button class="btn ghost" id="btn-capture">Use current look</button>
+            </div>
+            <div class="right">
+                <button class="btn ghost" id="btn-cancel">Cancel</button>
+                <button class="btn primary" id="btn-save">Save &amp; continue</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

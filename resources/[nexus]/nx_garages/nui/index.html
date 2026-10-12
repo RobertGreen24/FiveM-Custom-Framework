@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · Garage</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <div class="scrim"></div>
+
+        <div class="panel">
+            <header class="head">
+                <div>
+                    <p class="eyebrow" id="garage-type">Garage</p>
+                    <h1 id="garage-label">Legion Square</h1>
+                </div>
+                <div class="balances">
+                    <span>Cash <b id="cash">$0</b></span>
+                    <span>Bank <b id="bank">$0</b></span>
+                    <button class="btn ghost" id="btn-close">Close</button>
+                </div>
+            </header>
+
+            <nav class="filters" id="filters"></nav>
+
+            <div class="list" id="vehicles"></div>
+
+            <footer class="foot">
+                <span class="hint" id="hint">Choose a vehicle to bring it out.</span>
+                <div class="actions">
+                    <button class="btn ghost" id="btn-store">Store current vehicle</button>
+                    <button class="btn ghost" id="btn-refresh">Refresh</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

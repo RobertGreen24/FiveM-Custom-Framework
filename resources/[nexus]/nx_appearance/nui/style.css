@@ -1,0 +1,223 @@
+:root {
+    --bg: rgba(9, 10, 14, 0.95);
+    --panel: rgba(19, 21, 29, 0.94);
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #eef0f7;
+    --muted: #959cb2;
+    --accent: #8b5cf6;
+    --accent-2: #22d3ee;
+    --font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font);
+    color: var(--text);
+    background: transparent;
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.hidden { display: none !important; }
+.small { font-size: 11.5px; }
+.muted { color: var(--muted); }
+
+.app { position: absolute; inset: 0; }
+
+.scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(4, 5, 8, 0.86) 0%, rgba(4, 5, 8, 0.62) 42%, rgba(4, 5, 8, 0.18) 100%);
+    backdrop-filter: blur(2px);
+}
+
+.layout {
+    position: absolute;
+    inset: 0 0 78px 0;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 16px;
+    padding: 28px 30px;
+}
+
+.nav, .panel {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.55);
+}
+
+.nav { padding: 20px 16px; display: flex; flex-direction: column; gap: 4px; }
+.nav h1 { font-size: 19px; font-weight: 700; }
+.nav .muted { margin-bottom: 16px; }
+
+.nav-item {
+    padding: 10px 13px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.nav-item:hover { background: rgba(255, 255, 255, 0.05); color: var(--text); }
+.nav-item.selected { background: linear-gradient(135deg, var(--accent), #6d28d9); color: #fff; }
+
+.panel { padding: 22px; overflow-y: auto; max-width: 560px; }
+
+.view h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); margin: 18px 0 12px; font-weight: 600; }
+.view h2:first-child { margin-top: 0; }
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+.seg {
+    padding: 11px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    cursor: pointer;
+}
+
+.seg.selected { background: linear-gradient(135deg, var(--accent), #6d28d9); color: #fff; border-color: transparent; }
+
+.sliders { display: flex; flex-direction: column; gap: 13px; }
+
+.slider label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+.slider label span:last-child { color: var(--accent-2); font-variant-numeric: tabular-nums; }
+
+input[type='range'] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    outline: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.55);
+}
+
+.colours { display: grid; grid-template-columns: repeat(auto-fill, minmax(34px, 1fr)); gap: 8px; }
+
+.swatch {
+    height: 34px;
+    border-radius: 9px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.swatch.selected { border-color: #fff; }
+
+.components { display: flex; flex-direction: column; gap: 9px; }
+
+.component {
+    padding: 12px 13px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+}
+
+.component .head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.component .name { font-size: 13px; font-weight: 620; }
+.component .value { font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.component .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.component .buttons { display: flex; gap: 6px; }
+
+.mini {
+    padding: 6px 10px;
+    font-family: var(--font);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.mini:hover { background: rgba(139, 92, 246, 0.18); }
+.mini.off { color: var(--muted); }
+
+.outfits { display: flex; flex-direction: column; gap: 8px; }
+
+.outfit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 13px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 12.5px;
+}
+
+.save-row { display: flex; gap: 9px; margin-top: 16px; }
+
+input[type='text'] {
+    flex: 1;
+    padding: 10px 12px;
+    font-family: var(--font);
+    font-size: 12.5px;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+}
+
+input[type='text']:focus { border-color: var(--accent); }
+
+.hint { font-size: 11px; color: var(--muted); margin-top: 9px; }
+
+.footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 78px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    gap: 12px;
+}
+
+.footer .left, .footer .right { display: flex; gap: 9px; }
+
+.btn {
+    padding: 11px 18px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 650;
+    border-radius: 11px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: filter 120ms, transform 90ms;
+}
+
+.btn:active { transform: translateY(1px); }
+.btn.primary { background: linear-gradient(135deg, var(--accent), #6d28d9); color: #fff; }
+.btn.primary:hover { filter: brightness(1.12); }
+.btn.ghost { background: rgba(255, 255, 255, 0.06); border-color: var(--border); color: var(--text); }
+.btn.ghost:hover { background: rgba(255, 255, 255, 0.11); }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 999px; }

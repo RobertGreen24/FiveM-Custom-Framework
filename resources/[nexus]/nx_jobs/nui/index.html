@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · Employment</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <div class="backdrop"></div>
+
+        <div class="panel">
+            <header class="head">
+                <div>
+                    <p class="eyebrow">Employment Office</p>
+                    <h1>Find work</h1>
+                </div>
+                <div class="current" id="current"></div>
+            </header>
+
+            <div class="body">
+                <h2>Available positions</h2>
+                <div id="jobs" class="jobs"></div>
+            </div>
+
+            <footer class="foot">
+                <span class="hint">Public positions only. Department jobs are hired in person.</span>
+                <div class="actions">
+                    <button class="btn ghost danger" id="btn-quit">Resign</button>
+                    <button class="btn ghost" id="btn-refresh">Refresh</button>
+                    <button class="btn ghost" id="btn-close">Close</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

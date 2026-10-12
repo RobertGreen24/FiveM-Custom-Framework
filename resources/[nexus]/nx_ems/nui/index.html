@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · Medical</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <div class="backdrop"></div>
+
+        <div class="panel">
+            <header class="head">
+                <div>
+                    <p class="eyebrow">Pillbox Hill Medical</p>
+                    <h1>Patient charts</h1>
+                </div>
+                <div class="right">
+                    <input id="search" type="text" placeholder="Name, phone or id…" />
+                    <button class="btn primary" id="btn-search">Search</button>
+                    <button class="btn ghost" id="btn-refresh">Refresh</button>
+                    <button class="btn ghost" id="btn-close">Close</button>
+                </div>
+            </header>
+
+            <nav class="tabs">
+                <button class="tab selected" data-tab="dispatch">Dispatch</button>
+                <button class="tab" data-tab="recent">Recent charts</button>
+                <button class="tab" data-tab="patients">Patients</button>
+                <button class="tab" data-tab="hospitals">Hospitals</button>
+            </nav>
+
+            <div class="body">
+                <section class="view" id="view-dispatch">
+                    <div class="cards">
+                        <div class="card"><span>Pending calls</span><strong id="stat-calls">0</strong></div>
+                        <div class="card"><span>On duty</span><strong id="stat-medics">0</strong></div>
+                        <div class="card"><span>Active alerts</span><strong id="stat-alerts">0</strong></div>
+                    </div>
+                    <div id="calls" class="list"></div>
+                </section>
+
+                <section class="view hidden" id="view-recent">
+                    <div id="recent" class="list"></div>
+                </section>
+
+                <section class="view hidden" id="view-patients">
+                    <div id="patients" class="list"></div>
+                </section>
+
+                <section class="view hidden" id="view-hospitals">
+                    <div id="hospitals" class="list"></div>
+                </section>
+            </div>
+
+            <div id="chart" class="chart hidden"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
