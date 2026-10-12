@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus UI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- ===================== notifications ===================== -->
+    <div id="notifications" class="notifications"></div>
+
+    <!-- ===================== progress ===================== -->
+    <div id="progress" class="progress-wrap hidden">
+        <div class="progress-card">
+            <div class="progress-ring">
+                <svg viewBox="0 0 100 100">
+                    <circle class="ring-bg" cx="50" cy="50" r="42"></circle>
+                    <circle id="progress-ring-fill" class="ring-fill" cx="50" cy="50" r="42"></circle>
+                </svg>
+                <span id="progress-icon" class="progress-icon">◆</span>
+            </div>
+            <div class="progress-body">
+                <div id="progress-label" class="progress-label">Working</div>
+                <div class="progress-bar"><span id="progress-bar-fill"></span></div>
+                <div id="progress-hint" class="progress-hint">Hold on…</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== text UI ===================== -->
+    <div id="textui" class="textui hidden">
+        <span id="textui-key" class="textui-key">E</span>
+        <span id="textui-label" class="textui-label">Interact</span>
+    </div>
+
+    <!-- ===================== modal layer ===================== -->
+    <div id="modal-layer" class="modal-layer hidden">
+        <!-- input -->
+        <div id="input-panel" class="panel hidden">
+            <div class="panel-head">
+                <h2 id="input-title">Input</h2>
+                <p id="input-desc" class="panel-desc"></p>
+            </div>
+            <div id="input-fields" class="panel-body"></div>
+            <div class="panel-foot">
+                <button class="btn ghost" id="input-cancel">Cancel</button>
+                <button class="btn primary" id="input-submit">Confirm</button>
+            </div>
+        </div>
+
+        <!-- confirm -->
+        <div id="confirm-panel" class="panel narrow hidden">
+            <div class="panel-head">
+                <h2 id="confirm-title">Are you sure?</h2>
+                <p id="confirm-message" class="panel-desc"></p>
+            </div>
+            <div class="panel-foot">
+                <button class="btn ghost" id="confirm-cancel">Cancel</button>
+                <button class="btn primary" id="confirm-ok">Confirm</button>
+            </div>
+        </div>
+
+        <!-- menu -->
+        <div id="menu-panel" class="panel narrow hidden">
+            <div class="panel-head">
+                <h2 id="menu-title">Menu</h2>
+                <p id="menu-subtitle" class="panel-desc"></p>
+            </div>
+            <div id="menu-options" class="menu-options"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
