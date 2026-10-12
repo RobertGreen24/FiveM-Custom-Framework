@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · MDT</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <div class="backdrop"></div>
+
+        <div class="mdt">
+            <!-- top bar -->
+            <header class="topbar">
+                <div class="brand">
+                    <span class="dot"></span>
+                    <div>
+                        <strong>Los Santos Police Department</strong>
+                        <small>Mobile Data Terminal</small>
+                    </div>
+                </div>
+
+                <div class="search-wrap">
+                    <input id="search" type="text" placeholder="Search name, phone or state id…" />
+                    <button class="btn primary" id="btn-search">Search</button>
+                    <input id="plate" type="text" placeholder="Plate" />
+                    <button class="btn" id="btn-plate">Run plate</button>
+                </div>
+
+                <div class="officer">
+                    <div class="officer-name" id="officer-name">Officer</div>
+                    <div class="officer-meta" id="officer-meta">—</div>
+                    <button class="btn ghost" id="btn-close">Close</button>
+                </div>
+            </header>
+
+            <div class="body">
+                <!-- nav -->
+                <nav class="nav">
+                    <button class="nav-item selected" data-tab="dashboard">Dashboard</button>
+                    <button class="nav-item" data-tab="people">People</button>
+                    <button class="nav-item" data-tab="vehicles">Vehicles</button>
+                    <button class="nav-item" data-tab="warrants">Warrants <span class="pill" id="pill-warrants">0</span></button>
+                    <button class="nav-item" data-tab="bolos">BOLOs <span class="pill" id="pill-bolos">0</span></button>
+                    <button class="nav-item" data-tab="incidents">Incidents</button>
+                    <button class="nav-item" data-tab="calls">911 Calls <span class="pill" id="pill-calls">0</span></button>
+                    <button class="nav-item" data-tab="actions">Actions</button>
+                </nav>
+
+                <!-- content -->
+                <main class="content">
+                    <section class="tab" id="tab-dashboard">
+                        <div class="cards">
+                            <div class="card"><span>Open incidents</span><strong id="stat-incidents">0</strong></div>
+                            <div class="card"><span>Active warrants</span><strong id="stat-warrants">0</strong></div>
+                            <div class="card"><span>Active BOLOs</span><strong id="stat-bolos">0</strong></div>
+                            <div class="card"><span>Pending calls</span><strong id="stat-calls">0</strong></div>
+                        </div>
+                        <h3>Recent activity</h3>
+                        <div id="feed" class="feed"></div>
+                    </section>
+
+                    <section class="tab hidden" id="tab-people">
+                        <div id="people" class="results"></div>
+                    </section>
+
+                    <section class="tab hidden" id="tab-vehicles">
+                        <div id="vehicles" class="results"></div>
+                    </section>
+
+                    <section class="tab hidden" id="tab-warrants">
+                        <div class="toolbar">
+                            <button class="btn" id="btn-new-warrant">New warrant</button>
+                        </div>
+                        <div id="warrants" class="results"></div>
+                    </section>
+
+                    <section class="tab hidden" id="tab-bolos">
+                        <div class="toolbar">
+                            <button class="btn" id="btn-new-bolo">New BOLO</button>
+                        </div>
+                        <div id="bolos" class="results"></div>
+                    </section>
+
+                    <section class="tab hidden" id="tab-incidents">
+                        <div class="toolbar">
+                            <button class="btn" id="btn-new-incident">Log incident</button>
+                        </div>
+                        <div id="incidents" class="results"></div>
+                    </section>
+
+                    <section class="tab hidden" id="tab-calls">
+                        <div id="calls" class="results"></div>
+                    </section>
+
+                    <section class="tab hidden" id="tab-actions">
+                        <div class="actions-grid">
+                            <div class="action">
+                                <h4>Fine a player</h4>
+                                <input id="action-fine-target" type="number" placeholder="Server id" />
+                                <input id="action-fine-amount" type="number" placeholder="Amount" />
+                                <input id="action-fine-reason" type="text" placeholder="Reason" />
+                                <button class="btn" id="btn-action-fine">Issue fine</button>
+                            </div>
+
+                            <div class="action">
+                                <h4>Jail a player</h4>
+                                <input id="action-jail-target" type="number" placeholder="Server id" />
+                                <input id="action-jail-minutes" type="number" placeholder="Minutes" />
+                                <input id="action-jail-reason" type="text" placeholder="Reason" />
+                                <button class="btn" id="btn-action-jail">Send to cells</button>
+                            </div>
+
+                            <div class="action">
+                                <h4>Impound a vehicle</h4>
+                                <input id="action-impound-plate" type="text" placeholder="Plate" />
+                                <input id="action-impound-reason" type="text" placeholder="Reason" />
+                                <button class="btn" id="btn-action-impound">Impound</button>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <!-- modal: person profile -->
+        <div id="modal" class="modal hidden">
+            <div class="modal-card" id="modal-card"></div>
+        </div>
+    </div>
+
+    <!-- always-on overlays: toasts while the MDT is closed, jail status -->
+    <div id="toasts" class="toasts"></div>
+
+    <div id="jail-banner" class="jail-banner hidden">
+        <div class="jail-dot"></div>
+        <div>
+            <strong id="jail-title">Jailed</strong>
+            <small id="jail-sub"></small>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
