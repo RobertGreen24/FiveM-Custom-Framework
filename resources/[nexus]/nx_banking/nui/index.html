@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · Banking</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <div class="backdrop"></div>
+
+        <div class="panel">
+            <header class="head">
+                <div>
+                    <p class="eyebrow">Nexus Bank</p>
+                    <h1>Accounts</h1>
+                </div>
+                <button class="btn ghost" id="btn-close">Close</button>
+            </header>
+
+            <div class="balances">
+                <div class="balance-card cash">
+                    <span>Cash</span>
+                    <strong id="bal-cash">$0</strong>
+                </div>
+                <div class="balance-card bank">
+                    <span>Bank</span>
+                    <strong id="bal-bank">$0</strong>
+                </div>
+                <div class="balance-card savings">
+                    <span>Savings</span>
+                    <strong id="bal-savings">$0</strong>
+                </div>
+            </div>
+
+            <nav class="tabs">
+                <button class="tab selected" data-tab="deposit">Deposit</button>
+                <button class="tab" data-tab="withdraw">Withdraw</button>
+                <button class="tab" data-tab="transfer">Transfer</button>
+                <button class="tab" data-tab="history">History</button>
+            </nav>
+
+            <div class="body">
+                <!-- deposit -->
+                <section class="view" id="view-deposit">
+                    <label class="field-label">Amount</label>
+                    <div class="amount-row">
+                        <input id="deposit-amount" type="number" min="1" placeholder="0" />
+                        <button class="btn ghost quick" data-target="deposit" data-value="1000">1k</button>
+                        <button class="btn ghost quick" data-target="deposit" data-value="5000">5k</button>
+                        <button class="btn ghost quick" data-target="deposit" data-value="all">All</button>
+                    </div>
+                    <label class="field-label">Into</label>
+                    <div class="segmented" id="deposit-account">
+                        <button class="seg selected" data-value="bank">Bank</button>
+                        <button class="seg" data-value="savings">Savings</button>
+                    </div>
+                    <button class="btn primary block" id="btn-deposit">Deposit</button>
+                    <p class="hint" id="deposit-hint">Cash on hand: $0</p>
+                </section>
+
+                <!-- withdraw -->
+                <section class="view hidden" id="view-withdraw">
+                    <label class="field-label">Amount</label>
+                    <div class="amount-row">
+                        <input id="withdraw-amount" type="number" min="1" placeholder="0" />
+                        <button class="btn ghost quick" data-target="withdraw" data-value="1000">1k</button>
+                        <button class="btn ghost quick" data-target="withdraw" data-value="5000">5k</button>
+                        <button class="btn ghost quick" data-target="withdraw" data-value="all">All</button>
+                    </div>
+                    <label class="field-label">From</label>
+                    <div class="segmented" id="withdraw-account">
+                        <button class="seg selected" data-value="bank">Bank</button>
+                        <button class="seg" data-value="savings">Savings</button>
+                    </div>
+                    <button class="btn primary block" id="btn-withdraw">Withdraw</button>
+                    <p class="hint" id="withdraw-hint">ATM fee: $0 · limit $0</p>
+                </section>
+
+                <!-- transfer -->
+                <section class="view hidden" id="view-transfer">
+                    <label class="field-label">Recipient (phone, id or name)</label>
+                    <input id="transfer-target" type="text" placeholder="555-0123" />
+                    <label class="field-label">Amount</label>
+                    <input id="transfer-amount" type="number" min="1" placeholder="0" />
+                    <label class="field-label">Reference (optional)</label>
+                    <input id="transfer-note" type="text" maxlength="40" placeholder="Rent" />
+                    <label class="field-label">From</label>
+                    <div class="segmented" id="transfer-account">
+                        <button class="seg selected" data-value="bank">Bank</button>
+                        <button class="seg" data-value="savings">Savings</button>
+                    </div>
+                    <button class="btn primary block" id="btn-transfer">Send transfer</button>
+                    <p class="hint" id="transfer-hint">Fee: 0%</p>
+                </section>
+
+                <!-- history -->
+                <section class="view hidden" id="view-history">
+                    <div id="history" class="history"></div>
+                </section>
+            </div>
+
+            <footer class="foot">
+                <span class="hint" id="finance-line"></span>
+                <button class="btn ghost" id="btn-refresh">Refresh</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

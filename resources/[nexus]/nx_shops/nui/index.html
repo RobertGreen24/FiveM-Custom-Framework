@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · Shops</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <div class="backdrop"></div>
+
+        <div class="layout">
+            <!-- catalogue -->
+            <section class="catalogue">
+                <header class="head">
+                    <div>
+                        <p class="eyebrow" id="shop-type">Store</p>
+                        <h1 id="shop-label">24/7</h1>
+                    </div>
+                    <input id="search" type="text" placeholder="Search items…" />
+                </header>
+
+                <div id="items" class="items"></div>
+
+                <footer class="foot">
+                    <span class="hint" id="shop-hint">Prices include tax.</span>
+                    <button class="btn ghost" id="btn-close">Close</button>
+                </footer>
+            </section>
+
+            <!-- cart -->
+            <aside class="cart">
+                <h2>Basket</h2>
+                <div id="cart-items" class="cart-items"></div>
+
+                <div class="cart-total">
+                    <span>Total</span>
+                    <strong id="cart-total">$0</strong>
+                </div>
+
+                <label class="field-label">Pay with</label>
+                <div class="segmented" id="payment-group">
+                    <button class="seg selected" data-value="cash">Cash</button>
+                    <button class="seg" data-value="bank">Bank</button>
+                </div>
+
+                <div class="balances">
+                    <span>Cash <b id="bal-cash">$0</b></span>
+                    <span>Bank <b id="bal-bank">$0</b></span>
+                </div>
+
+                <button class="btn primary block" id="btn-checkout">Checkout</button>
+                <p class="hint" id="cart-hint"></p>
+            </aside>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
