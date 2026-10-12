@@ -1,0 +1,160 @@
+:root {
+    --text: #eef1f8;
+    --muted: #a7aec2;
+    --bg: rgba(8, 9, 13, 0.72);
+    --panel: rgba(16, 18, 25, 0.92);
+    --border: rgba(255, 255, 255, 0.09);
+    --accent: #8b5cf6;
+    --font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font);
+    background: transparent;
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.chat {
+    position: absolute;
+    left: 22px;
+    bottom: 18px;
+    width: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ------------------------------ messages ------------------------------ */
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-height: 42vh;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.messages::-webkit-scrollbar { width: 5px; }
+.messages::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.16); border-radius: 999px; }
+
+.line {
+    padding: 4px 9px;
+    font-size: 13.5px;
+    line-height: 1.42;
+    color: var(--text);
+    background: var(--bg);
+    border-radius: 7px;
+    border-left: 2px solid transparent;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+    word-wrap: break-word;
+    animation: fadeIn 140ms ease-out;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.line .time { color: rgba(255, 255, 255, 0.38); font-size: 10.5px; margin-right: 6px; font-variant-numeric: tabular-nums; }
+.line .author { font-weight: 650; }
+.line .body { color: #f1f3f9; white-space: pre-wrap; }
+
+.line.local { border-left-color: #60a5fa; }
+.line.me { border-left-color: #c4b5fd; }
+.line.do { border-left-color: #a78bfa; }
+.line.ooc { border-left-color: #93c5fd; }
+.line.ad { border-left-color: #fcd34d; }
+.line.twt { border-left-color: #67e8f9; }
+.line.dispatch { border-left-color: #fca5a5; }
+.line.staff { border-left-color: #f9a8d4; }
+.line.system { border-left-color: #34d399; background: rgba(6, 20, 16, 0.72); }
+.line.whisper .body { font-style: italic; color: #cbd5e1; }
+
+/* ------------------------------ composer ------------------------------ */
+
+.composer {
+    display: none;
+    flex-direction: column;
+    gap: 7px;
+    padding: 11px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+}
+
+.chat.open .composer { display: flex; }
+
+.channels { display: flex; gap: 5px; flex-wrap: wrap; }
+
+.channel {
+    padding: 5px 10px;
+    font-family: var(--font);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.channel:hover { color: var(--text); }
+.channel.selected { background: linear-gradient(135deg, var(--accent), #6d28d9); color: #fff; border-color: transparent; }
+
+.input-row { display: flex; align-items: center; gap: 9px; }
+
+.prefix {
+    padding: 7px 10px;
+    font-size: 12px;
+    font-weight: 650;
+    color: #c4b5fd;
+    background: rgba(139, 92, 246, 0.14);
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+#input {
+    flex: 1;
+    padding: 9px 11px;
+    font-family: var(--font);
+    font-size: 13.5px;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: none;
+}
+
+#input:focus { border-color: var(--accent); }
+
+.counter { font-size: 10.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.suggestions {
+    display: none;
+    flex-direction: column;
+    max-height: 168px;
+    overflow-y: auto;
+    background: rgba(10, 11, 16, 0.96);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.suggestions.show { display: flex; }
+
+.suggestion {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 11px;
+    font-size: 12.5px;
+    cursor: pointer;
+}
+
+.suggestion:hover, .suggestion.selected { background: rgba(139, 92, 246, 0.18); }
+.suggestion .name { font-weight: 650; color: #d8b4fe; }
+.suggestion .desc { color: var(--muted); font-size: 11.5px; text-align: right; }
+
+.hint { font-size: 10.5px; color: var(--muted); }

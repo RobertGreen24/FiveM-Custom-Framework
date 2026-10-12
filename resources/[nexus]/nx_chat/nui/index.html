@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · Chat</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="chat" class="chat">
+        <div class="messages" id="messages"></div>
+
+        <div class="composer" id="composer">
+            <div class="channels" id="channels"></div>
+
+            <div class="input-row">
+                <span class="prefix" id="prefix">/local</span>
+                <input id="input" type="text" maxlength="200" autocomplete="off" spellcheck="false" placeholder="Say something…" />
+                <span class="counter" id="counter">0/200</span>
+            </div>
+
+            <div class="suggestions" id="suggestions"></div>
+            <div class="hint">Enter to send · Tab to change channel · Escape to close · ↑ for history</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
