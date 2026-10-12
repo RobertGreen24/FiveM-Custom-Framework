@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus Inventory</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <div class="backdrop"></div>
+
+        <div class="wrap">
+            <!-- ======================= player panel ======================= -->
+            <section class="panel" id="panel-self">
+                <header class="panel-head">
+                    <div class="panel-title">
+                        <h2 id="self-label">Inventory</h2>
+                        <span class="slot-count" id="self-slots">0/40</span>
+                    </div>
+                    <div class="weight">
+                        <div class="weight-bar"><span id="self-weight-bar"></span></div>
+                        <span class="weight-text" id="self-weight">0 / 40 kg</span>
+                    </div>
+                </header>
+                <div class="money-strip">
+                    <div class="money-item"><span class="mi-icon cash">$</span><span id="money-cash">0</span></div>
+                    <div class="money-item"><span class="mi-icon bank">▤</span><span id="money-bank">0</span></div>
+                    <div class="money-item dirty hidden" id="money-dirty-wrap"><span class="mi-icon dirty">◈</span><span id="money-dirty">0</span></div>
+                </div>
+                <div class="grid" id="grid-self"></div>
+                <footer class="panel-foot">
+                    <span class="hint"><b>Drag</b> to move · <b>Shift+Click</b> quick move · <b>Right click</b> actions · <b>F2</b> close</span>
+                </footer>
+            </section>
+
+            <!-- ======================= other container ======================= -->
+            <section class="panel secondary hidden" id="panel-other">
+                <header class="panel-head">
+                    <div class="panel-title">
+                        <h2 id="other-label">Trunk</h2>
+                        <span class="slot-count" id="other-slots">0/35</span>
+                    </div>
+                    <div class="weight">
+                        <div class="weight-bar"><span id="other-weight-bar"></span></div>
+                        <span class="weight-text" id="other-weight">0 / 75 kg</span>
+                    </div>
+                </header>
+                <div class="grid" id="grid-other"></div>
+                <footer class="panel-foot">
+                    <button class="btn ghost" id="btn-pickup-all">Take everything</button>
+                </footer>
+            </section>
+        </div>
+
+        <!-- ======================= context menu ======================= -->
+        <div id="context" class="context hidden">
+            <div class="context-item" data-action="use">Use / Equip</div>
+            <div class="context-item" data-action="give">Give to player</div>
+            <div class="context-item" data-action="split">Split stack</div>
+            <div class="context-item" data-action="drop">Drop</div>
+            <div class="context-item" data-action="dropAll">Drop all</div>
+        </div>
+
+        <!-- ======================= give modal ======================= -->
+        <div id="give-modal" class="modal hidden">
+            <div class="modal-card">
+                <h3>Give item</h3>
+                <p class="muted" id="give-subtitle">Choose a player nearby</p>
+                <div id="give-players" class="player-list"></div>
+                <div class="modal-foot">
+                    <button class="btn ghost" id="give-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= tooltip ======================= -->
+        <div id="tooltip" class="tooltip hidden">
+            <div class="tt-title" id="tt-title">Item</div>
+            <div class="tt-desc" id="tt-desc"></div>
+            <div class="tt-meta" id="tt-meta"></div>
+        </div>
+
+        <!-- ======================= drag ghost ======================= -->
+        <div id="drag-ghost" class="drag-ghost hidden"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

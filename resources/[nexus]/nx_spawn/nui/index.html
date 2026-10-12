@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · Spawn</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <header class="head">
+            <div>
+                <p class="eyebrow">Welcome back</p>
+                <h1 id="player-name">Citizen</h1>
+                <p class="muted" id="player-job">Where would you like to start?</p>
+            </div>
+            <div class="hint">
+                <span class="key">↑</span><span class="key">↓</span> browse
+                <span class="key">Enter</span> spawn
+            </div>
+        </header>
+
+        <div id="resume" class="resume hidden">
+            <div class="resume-text">
+                <strong>Continue where you left off</strong>
+                <span class="muted">Return to your last known position in the city.</span>
+            </div>
+            <button class="btn primary" id="btn-resume">Spawn here</button>
+        </div>
+
+        <div id="spawn-grid" class="grid"></div>
+
+        <footer class="foot">
+            <span>Nexus Framework · spawn selection</span>
+            <span class="muted" id="timer"></span>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

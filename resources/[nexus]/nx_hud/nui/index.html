@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus HUD</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="hud" class="hud hidden">
+        <!-- ===================== status rings ===================== -->
+        <section id="status" class="status">
+            <div class="ring" data-stat="health">
+                <svg viewBox="0 0 64 64">
+                    <circle class="track" cx="32" cy="32" r="27"></circle>
+                    <circle class="fill" id="ring-health" cx="32" cy="32" r="27"></circle>
+                </svg>
+                <span class="ring-icon">✚</span>
+                <span class="ring-value" id="val-health">100</span>
+            </div>
+
+            <div class="ring small" data-stat="armour">
+                <svg viewBox="0 0 64 64">
+                    <circle class="track" cx="32" cy="32" r="27"></circle>
+                    <circle class="fill" id="ring-armour" cx="32" cy="32" r="27"></circle>
+                </svg>
+                <span class="ring-icon">⛨</span>
+            </div>
+
+            <div class="ring small" data-stat="hunger">
+                <svg viewBox="0 0 64 64">
+                    <circle class="track" cx="32" cy="32" r="27"></circle>
+                    <circle class="fill" id="ring-hunger" cx="32" cy="32" r="27"></circle>
+                </svg>
+                <span class="ring-icon">🍴</span>
+            </div>
+
+            <div class="ring small" data-stat="thirst">
+                <svg viewBox="0 0 64 64">
+                    <circle class="track" cx="32" cy="32" r="27"></circle>
+                    <circle class="fill" id="ring-thirst" cx="32" cy="32" r="27"></circle>
+                </svg>
+                <span class="ring-icon">💧</span>
+            </div>
+
+            <div class="ring small hidden" id="ring-stress-wrap" data-stat="stress">
+                <svg viewBox="0 0 64 64">
+                    <circle class="track" cx="32" cy="32" r="27"></circle>
+                    <circle class="fill" id="ring-stress" cx="32" cy="32" r="27"></circle>
+                </svg>
+                <span class="ring-icon">⚡</span>
+            </div>
+        </section>
+
+        <!-- ===================== top right ===================== -->
+        <section class="top-right">
+            <div id="money" class="card money">
+                <div class="money-row">
+                    <span class="money-icon cash">$</span>
+                    <span id="money-cash" class="money-value">0</span>
+                </div>
+                <div class="money-row">
+                    <span class="money-icon bank">▤</span>
+                    <span id="money-bank" class="money-value">0</span>
+                </div>
+                <div class="money-row hidden" id="money-black-row">
+                    <span class="money-icon dirty">◈</span>
+                    <span id="money-black" class="money-value">0</span>
+                </div>
+            </div>
+
+            <div id="serverinfo" class="card tiny">
+                <span class="dot" id="server-dot"></span>
+                <span id="server-name">Nexus</span>
+                <span class="sep">·</span>
+                <span id="server-players">0</span>
+            </div>
+
+            <div id="voice" class="card tiny voice">
+                <span class="voice-icon" id="voice-icon">🎙</span>
+                <span id="voice-label">Normal</span>
+                <span class="bars" id="voice-bars">
+                    <i></i><i></i><i></i><i></i>
+                </span>
+            </div>
+        </section>
+
+        <!-- ===================== bottom right ===================== -->
+        <section class="bottom-right">
+            <div id="vehicle" class="card vehicle hidden">
+                <div class="speedo">
+                    <span id="vehicle-speed">0</span>
+                    <small id="vehicle-unit">mph</small>
+                </div>
+                <div class="vehicle-meta">
+                    <div class="meta-row">
+                        <span class="meta-label">Fuel</span>
+                        <div class="bar"><span id="fuel-bar"></span></div>
+                        <span class="meta-value" id="fuel-value">100%</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Body</span>
+                        <div class="bar red"><span id="body-bar"></span></div>
+                        <span class="meta-value" id="body-value">100%</span>
+                    </div>
+                    <div class="vehicle-tags">
+                        <span class="tag" id="tag-gear">P</span>
+                        <span class="tag" id="tag-plate">—</span>
+                        <span class="tag warn hidden" id="tag-seatbelt">SEATBELT</span>
+                        <span class="tag ok hidden" id="tag-cruise">CRUISE</span>
+                        <span class="tag danger hidden" id="tag-locked">LOCKED</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="jobcard" class="card job">
+                <div class="job-line">
+                    <span class="job-pulse" id="duty-pulse"></span>
+                    <div>
+                        <div class="job-label" id="job-label">Unemployed</div>
+                        <div class="job-grade" id="job-grade">Civilian</div>
+                    </div>
+                </div>
+                <div class="job-gang hidden" id="job-gang">No affiliation</div>
+            </div>
+        </section>
+
+        <!-- ===================== bottom left (above minimap) ===================== -->
+        <section class="bottom-left">
+            <div id="streetbox" class="card street">
+                <span id="street-name">—</span>
+                <span class="street-zone" id="street-zone"></span>
+            </div>
+            <div id="ammo" class="card ammo hidden">
+                <span class="ammo-clip" id="ammo-clip">0</span>
+                <span class="ammo-sep">/</span>
+                <span class="ammo-total" id="ammo-total">0</span>
+            </div>
+        </section>
+
+        <!-- ===================== centre ===================== -->
+        <section class="centre">
+            <div id="downed" class="downed hidden">
+                <span class="downed-title">INCAPACITATED</span>
+                <span class="downed-sub" id="downed-sub">Wait for EMS or press E to check in</span>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
