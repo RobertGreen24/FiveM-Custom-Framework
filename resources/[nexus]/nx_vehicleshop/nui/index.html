@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nexus · Dealership</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="app hidden">
+        <div class="backdrop"></div>
+
+        <div class="layout">
+            <!-- categories -->
+            <aside class="sidebar">
+                <h1 id="shop-label">Dealership</h1>
+                <p class="muted small" id="shop-sub">Select a category</p>
+                <nav id="categories" class="categories"></nav>
+                <div class="owned">
+                    <div class="owned-head">
+                        <span>Your garage</span>
+                        <span class="muted" id="owned-count">0</span>
+                    </div>
+                    <div id="owned-list" class="owned-list"></div>
+                </div>
+            </aside>
+
+            <!-- vehicle list -->
+            <section class="list-panel">
+                <header class="list-head">
+                    <h2 id="category-label">Vehicles</h2>
+                    <div class="money">
+                        <span class="muted">Cash</span><strong id="money-cash">$0</strong>
+                        <span class="muted">Bank</span><strong id="money-bank">$0</strong>
+                    </div>
+                </header>
+                <div id="vehicles" class="vehicles"></div>
+                <footer class="list-foot">
+                    <span class="hint">Preview and test drive before you buy — press <b>Escape</b> to leave.</span>
+                    <button class="btn ghost" id="btn-close">Close</button>
+                </footer>
+            </section>
+        </div>
+
+        <!-- detail / purchase -->
+        <div id="detail" class="detail hidden">
+            <div class="detail-card">
+                <header>
+                    <div>
+                        <p class="eyebrow" id="detail-category">Sports</p>
+                        <h2 id="detail-name">Elegy RH8</h2>
+                    </div>
+                    <div class="price">
+                        <span id="detail-price">$125,000</span>
+                        <small id="detail-fee">+ $250 registration</small>
+                    </div>
+                </header>
+
+                <div class="detail-body">
+                    <div class="option-row">
+                        <label>Payment method</label>
+                        <div class="segmented" id="payment-group">
+                            <button class="seg selected" data-value="bank">Bank</button>
+                            <button class="seg" data-value="cash">Cash</button>
+                            <button class="seg" data-value="finance" id="seg-finance">Finance</button>
+                        </div>
+                    </div>
+
+                    <div id="finance-box" class="finance hidden">
+                        <div class="finance-line"><span>Credit score</span><strong id="credit-score">650</strong></div>
+                        <div class="finance-line"><span>Deposit</span><strong id="finance-deposit">$0</strong></div>
+                        <div class="finance-line"><span>Interest rate</span><strong id="finance-rate">5%</strong></div>
+                        <div class="finance-line"><span>Weekly payment</span><strong id="finance-weekly">$0</strong></div>
+                    </div>
+
+                    <div id="detail-error" class="error hidden"></div>
+                </div>
+
+                <footer>
+                    <button class="btn ghost" id="btn-cancel">Cancel</button>
+                    <button class="btn ghost" id="btn-preview">Preview</button>
+                    <button class="btn ghost" id="btn-test">Test drive</button>
+                    <button class="btn primary" id="btn-buy">Buy vehicle</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
