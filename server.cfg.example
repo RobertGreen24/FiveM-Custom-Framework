@@ -45,28 +45,33 @@ set nx_locale "en"
 set nx_dev_mode "false"
 
 ensure nx_core
-ensure nx_ui
 
-# --- gameplay (order matters: core -> ui -> the rest) -----------------------
-ensure nx_chat
+# --- gameplay (order matters: core -> the rest) ------------------------------
 ensure nx_hud
-ensure nx_weathersync
+ensure nx_multicharacter
+ensure nx_spawn
+ensure nx_inventory
+ensure nx_appearance
 ensure nx_vehicles
 ensure nx_garages
 ensure nx_vehicleshop
-ensure nx_inventory
-ensure nx_multicharacter
-ensure nx_spawn
-ensure nx_appearance
 ensure nx_banking
 ensure nx_shops
 ensure nx_jobs
 ensure nx_police
 ensure nx_ems
-ensure nx_mechanic
-ensure nx_phone
-ensure nx_admin
-ensure nx_loadingscreen
+ensure nx_chat
+
+# --- pending resources -------------------------------------------------------
+# These are referenced by nx_core and the gameplay scripts but are not part of
+# the repository yet. Uncomment each line only once the folder exists under
+# resources/[nexus]/, otherwise the server logs a "couldn't find resource".
+# ensure nx_ui              # shared NUI component library
+# ensure nx_weathersync     # dynamic weather and time sync
+# ensure nx_mechanic        # mechanic shops, repairs and towing
+# ensure nx_phone           # phone, messages, 911 calls and Twitter bridge
+# ensure nx_admin           # in-game admin panel (server bridge in nx_core)
+# ensure nx_loadingscreen   # pre-connect loading screen
 
 # --- optional third party (enable if you use them) ---------------------------
 # ensure pma-voice          # proximity voice - nx_hud + nx_phone detect it
